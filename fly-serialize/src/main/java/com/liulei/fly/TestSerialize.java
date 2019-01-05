@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @Auther: fly
  * @Date: 2019/1/5
- * @Description:
+ * @Description:序列化测试类
  */
 public class TestSerialize {
     private static final int pojoNum = 1 * 10000;
