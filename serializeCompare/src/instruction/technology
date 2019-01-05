@@ -7,4 +7,4 @@
             如：Codec<PojoPersion> codec = ProtobufProxy.create(PojoPersion.class, false);
         使用编解码器api序列化与反序列化对象：
             codec.encode();codedecode()
-2、kryo序列化参考kryoUtil类中注释（此kryo工具类是从Github中摘取的）
+2、kryo序列化参考kryoUtil类中注释（此kryo工具类是从Github中摘取的）。
