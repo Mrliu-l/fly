@@ -1,0 +1,10 @@
+1、jprotobuf
+    1.1、介绍
+        为百度封装谷歌的protobuf，使用方便切效率高于谷歌原生类库3倍左右
+    1.2、使用方法：
+        使用注释标注实体类
+        使用protobufProxy代理生成编解码器codec：
+            如：Codec<PojoPersion> codec = ProtobufProxy.create(PojoPersion.class, false);
+        使用编解码器api序列化与反序列化对象：
+            codec.encode();codedecode()
+2、kryo序列化参考kryoUtil类中注释（此kryo工具类是从Github中摘取的）
