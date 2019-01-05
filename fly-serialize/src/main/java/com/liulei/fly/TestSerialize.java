@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Auther: liulei
- * @Date: 2019/1/5 $time
- * @Description: 各种类型序列化测试
+ * @Auther: fly
+ * @Date: 2019/1/5
+ * @Description:
  */
-public class SerializeTest {
+public class TestSerialize {
     private static final int pojoNum = 1 * 10000;
 
     public static void main(String[] args) {
