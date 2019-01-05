@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/fly-serialize/fly-serialize.iml" filepath="$PROJECT_DIR$/fly-serialize/fly-serialize.iml" />
+      <module fileurl="file://$PROJECT_DIR$/serializeCompare/fly-serialize.iml" filepath="$PROJECT_DIR$/serializeCompare/fly-serialize.iml" />
+      <module fileurl="file://$PROJECT_DIR$/serializeCompare/serializeCompare.iml" filepath="$PROJECT_DIR$/serializeCompare/serializeCompare.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/work_space_git.iml" filepath="$PROJECT_DIR$/.idea/work_space_git.iml" />
     </modules>
   </component>

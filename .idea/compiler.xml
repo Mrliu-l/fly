@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="fly-serialize" />
+        <module name="serializeCompare" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="fly-serialize" target="1.7" />
+      <module name="serializeCompare" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
