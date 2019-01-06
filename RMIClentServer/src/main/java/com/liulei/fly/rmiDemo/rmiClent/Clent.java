@@ -1,6 +1,6 @@
-package com.liulei.fly.rmiClent;
+package com.liulei.fly.rmiDemo.rmiClent;
 
-import com.liulei.fly.ISayHello;
+import com.liulei.fly.rmiDemo.ISayHello;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

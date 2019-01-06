@@ -1,4 +1,4 @@
-package com.liulei.fly;
+package com.liulei.fly.rmiDemo;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

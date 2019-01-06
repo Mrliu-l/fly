@@ -1,6 +1,6 @@
-package com.liulei.fly.rmiServer;
+package com.liulei.fly.rmiDemo.rmiServer;
 
-import com.liulei.fly.ISayHello;
+import com.liulei.fly.rmiDemo.ISayHello;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
