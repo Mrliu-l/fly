@@ -8,6 +8,7 @@
       <list>
         <option value="$PROJECT_DIR$/fly-serialize/pom.xml" />
         <option value="$PROJECT_DIR$/serializeCompare/pom.xml" />
+        <option value="$PROJECT_DIR$/RMIClentServer/pom.xml" />
       </list>
     </option>
   </component>
