@@ -6,9 +6,14 @@
 
   <groupId>com.liulei.fly</groupId>
   <artifactId>RMIClentServer</artifactId>
-  <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>webService</module>
+        <module>../webSercive</module>
+    </modules>
 
-  <name>RMIClentServer</name>
+    <name>RMIClentServer</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
