@@ -15,10 +15,10 @@ public class EhCacheTestServiceTest extends SpringTestCase {
 
     @Test
     public void getTimestampTest() throws InterruptedException{
-        System.out.println("第一次调用：" + ehCacheTestService.getTimestamp("param"));
+        System.out.println("第一次调用：" + ehCacheTestService.getTimestamp("param").getTime());
         Thread.sleep(2000);
-        System.out.println("2秒之后调用：" + ehCacheTestService.getTimestamp("param"));
+        System.out.println("2秒之后调用：" + ehCacheTestService.getTimestamp("param").getTime());
         Thread.sleep(11000);
-        System.out.println("再过11秒之后调用：" + ehCacheTestService.getTimestamp("param"));
+        System.out.println("再过11秒之后调用：" + ehCacheTestService.getTimestamp("param").getTime());
     }
 }

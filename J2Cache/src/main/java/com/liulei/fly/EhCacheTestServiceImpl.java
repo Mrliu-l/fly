@@ -1,5 +1,6 @@
 package com.liulei.fly;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,8 +12,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class EhCacheTestServiceImpl implements EhCacheTestService {
     @Override
-    public String getTimestamp(String param) {
+    @Cacheable(value="cacheTest",key="#param")
+    public TimeModel getTimestamp(String param) {
+        TimeModel timeModel = new TimeModel();
         long timeStamp = System.currentTimeMillis();
-        return String.valueOf(timeStamp);
+        timeModel.setTime(String.valueOf(timeStamp));
+        return timeModel;
     }
 }

@@ -8,5 +8,5 @@ package com.liulei.fly;
  */
 public interface EhCacheTestService {
 
-    public String getTimestamp(String param);
+    public TimeModel getTimestamp(String param);
 }
