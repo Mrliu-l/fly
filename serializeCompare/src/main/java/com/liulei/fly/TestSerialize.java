@@ -4,10 +4,13 @@ import com.baidu.bjf.remoting.protobuf.Codec;
 import com.baidu.bjf.remoting.protobuf.ProtobufProxy;
 import com.liulei.fly.kryo.KryoUtil;
 import com.liulei.fly.model.PojoPersion;
+import com.liulei.fly.protostuff.ProtoBufUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther: fly
@@ -20,15 +23,42 @@ public class TestSerialize {
     public static void main(String[] args) {
         List<PojoPersion> datas = getPojoPersionList();
         List<byte[]> bytesOfDatas = null;
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 2; i++)
             bytesOfDatas = serializeWithKryo(datas);
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 2; i++)
             deSerializeWithKryo(bytesOfDatas);
-        for(int i = 0; i < 5; i++)
-            bytesOfDatas = serializeWithProtobuf(datas);
-        for(int i = 0; i < 5; i++)
-            deSerializeWithProtobuf(bytesOfDatas);
+        //for(int i = 0; i < 5; i++)
+        //    bytesOfDatas = serializeWithProtobuf(datas);
+        //for(int i = 0; i < 5; i++)
+        //    deSerializeWithProtobuf(bytesOfDatas);
+        for(int i = 0; i < 2; i++)
+            bytesOfDatas = serializeWithProtoStuff(datas);
+        for(int i = 0; i < 2; i++)
+            deSerializeWithProtoStuff(bytesOfDatas);
     }
+
+    public static void deSerializeWithProtoStuff(List<byte[]> bytesOfDatas){
+        long s0 = System.currentTimeMillis();
+        for(int i = 0; i < pojoNum; i++){
+            PojoPersion deserializer = ProtoBufUtil.deserializer(bytesOfDatas.get(i), PojoPersion.class);
+            //System.out.println(deserializer.toString());
+        }
+        System.out.println("protoStuff反序列" + pojoNum + "个对象化耗时：" + (System.currentTimeMillis() - s0) + "ms;");
+    }
+
+    public static List<byte[]> serializeWithProtoStuff(List<PojoPersion> datas){
+        List<byte[]> bytesOfData = new ArrayList<>(datas.size());
+        byte[] bytes = null;
+        long s0 = System.currentTimeMillis();
+        for(int i = 0; i < pojoNum; i++){
+            bytes = ProtoBufUtil.serializer(datas.get(i));
+            bytesOfData.add(bytes);
+        }
+        System.out.println("protoStuff序列化" + pojoNum + "个对象耗时：" + (System.currentTimeMillis() - s0) + "ms;大小为:" + bytes.length);
+        return bytesOfData;
+    }
+
+
 
     public static void deSerializeWithProtobuf(List<byte[]> bytesOfDatas){
         Codec<PojoPersion> codec = ProtobufProxy.create(PojoPersion.class, false);
@@ -62,7 +92,8 @@ public class TestSerialize {
     public static void deSerializeWithKryo(List<byte[]> bytesOfData){
         long s0 = System.currentTimeMillis();
         for(int i = 0; i < pojoNum; i++){
-            KryoUtil.readFromByteArray(bytesOfData.get(i));
+            PojoPersion po = KryoUtil.readFromByteArray(bytesOfData.get(i));
+            //System.out.println(po.toString());
         }
         System.out.println("kryo反序列化" + pojoNum + "个对象耗时：" + (System.currentTimeMillis() - s0) + "ms;");
     }
@@ -98,6 +129,8 @@ public class TestSerialize {
             pojoPersion.setDescript9("测试，我要多一点字符串，以便对象大一些" + i);
             pojoPersion.setDescript10("测试，我要多一点字符串，以便对象大一些" + i);
             pojoPersion.setDescript11("测试，我要多一点字符串，以便对象大一些" + i);
+            pojoPersion.getMap().put("test","测试引用");
+            pojoPersion.getList().add("测试list");
             pojoList.add(pojoPersion);
         }
         return pojoList;

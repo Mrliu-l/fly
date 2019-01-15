@@ -1,6 +1,14 @@
 package com.liulei.fly.model;
 
 import com.baidu.bjf.remoting.protobuf.annotation.ProtobufClass;
+import com.esotericsoftware.kryo.serializers.FieldSerializer;
+import io.protostuff.Exclude;
+import io.protostuff.Tag;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther: liulei
@@ -9,6 +17,12 @@ import com.baidu.bjf.remoting.protobuf.annotation.ProtobufClass;
  */
 @ProtobufClass
 public class PojoPersion {
+    //@FieldSerializer.Optional("")
+    //@Exclude
+    private Map<String, String> map = new HashMap<>();
+    private List<String> list = new ArrayList<>();
+    //@FieldSerializer.Optional("")
+    @Exclude
     private String school;
     private String name;
     private double height;
@@ -143,5 +157,44 @@ public class PojoPersion {
 
     public void setDescript11(String descript11) {
         this.descript11 = descript11;
+    }
+
+    public Map<String, String> getMap() {
+        return map;
+    }
+
+    public void setMap(Map<String, String> map) {
+        this.map = map;
+    }
+
+    public List<String> getList() {
+        return list;
+    }
+
+    public void setList(List<String> list) {
+        this.list = list;
+    }
+
+    @Override
+    public String toString() {
+        return "PojoPersion{" +
+                "map=" + map +
+                ", list=" + list +
+                ", school='" + school + '\'' +
+                ", name='" + name + '\'' +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", descript1='" + descript1 + '\'' +
+                ", descript2='" + descript2 + '\'' +
+                ", descript3='" + descript3 + '\'' +
+                ", descript4='" + descript4 + '\'' +
+                ", descript5='" + descript5 + '\'' +
+                ", descript6='" + descript6 + '\'' +
+                ", descript7='" + descript7 + '\'' +
+                ", descript8='" + descript8 + '\'' +
+                ", descript9='" + descript9 + '\'' +
+                ", descript10='" + descript10 + '\'' +
+                ", descript11='" + descript11 + '\'' +
+                '}';
     }
 }
