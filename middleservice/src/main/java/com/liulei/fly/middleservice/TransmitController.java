@@ -75,13 +75,6 @@ public class TransmitController {
     private static String getParam(Map<String, String> map) throws UnsupportedEncodingException, IllegalAccessException, NoSuchFieldException {
         SerializeUtil.initProtoParam(false);
         Param param = new Param();
-        //param.setLoginCompCode(map.get("loginCompCode"));
-        //param.setCompCode(map.get("compCode"));
-        //param.setItemCode(map.get("itemCode"));
-        //param.setItemName(map.get("itemName"));
-        //param.setYear(map.get("year"));
-        //param.setPlanYear(map.get("planYear"));
-        //param.setVolLevel(map.get("volLevel"));
         Class clazz = Param.class;
         Map<String, Object> paramMap = new HashMap<>();
         for(String key : map.keySet()){
