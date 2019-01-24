@@ -55,7 +55,7 @@
         <dependency>
             <groupId>com.sgcc</groupId>
             <artifactId>SGCCPlatform-business-serializeUtil</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
             <scope>compile</scope>
         </dependency>
 
