@@ -11,11 +11,15 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
  * @Description: 描述:
  */
 public class CuratorClientUtils {
+
+    private static CuratorFramework curatorFramework;
+
     private static final String CONNECTSERVER = "192.168.1.121:2181,192.168.1.122:2181,192.168.1.123:2181,192.168.1.124:2181";
 
     public static CuratorFramework getInstance(){
-        CuratorFramework fluentCurator = CuratorFrameworkFactory.builder().connectString(CONNECTSERVER).sessionTimeoutMs(4000).connectionTimeoutMs(4000)
+        curatorFramework = CuratorFrameworkFactory.builder().connectString(CONNECTSERVER).sessionTimeoutMs(5000).connectionTimeoutMs(5000)
                 .retryPolicy(new ExponentialBackoffRetry(1000, 3)).build();
-        return fluentCurator;
+        curatorFramework.start();
+        return curatorFramework;
     }
 }
