@@ -1,6 +1,6 @@
 package com.telek.business.protoUtil;
 
-import com.telek.business.annotation.RequireParam;
+import com.telek.business.annotation.ParamAttrRequire;
 import com.telek.business.cache.CachePool;
 import com.telek.business.message.Param;
 import io.protostuff.LinkedBuffer;
@@ -167,9 +167,8 @@ public class SerializeUtil {
         Set<Class<?>> classes = new HashSet<>();
         if(isBackServer){
             classes = ScanClassUtil.getClasses("com.telek.business.cache.model");
-        }else{
-            classes.add(Param.class);
         }
+        classes.add(Param.class);
         for (Class<?> clazz : classes) {
             if(Modifier.isAbstract(clazz.getModifiers())){
                 continue;
@@ -188,10 +187,10 @@ public class SerializeUtil {
             //2、加载schema
             CachePool.CACHE_SCHEMA.put(clazz, RuntimeSchema.getSchema(clazz));
             //3、加载前台传参注解信息
-            Field[] fields = Param.class.getFields();
+            Field[] fields = Param.class.getDeclaredFields();
             for(Field field : fields){
-                RequireParam requireParam = field.getAnnotation(RequireParam.class);
-                CachePool.requireParamMap.put(field, requireParam);
+                ParamAttrRequire paramAttrRequire = field.getAnnotation(ParamAttrRequire.class);
+                CachePool.requireParamMap.put(field, paramAttrRequire);
             }
         }
     }

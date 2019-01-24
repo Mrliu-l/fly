@@ -1,6 +1,6 @@
 package com.telek.business.annotation;
 
-import com.telek.business.Type.CheckParamField;
+import com.telek.business.Type.ParamCheckField;
 
 import java.lang.annotation.*;
 
@@ -8,8 +8,8 @@ import java.lang.annotation.*;
 @Inherited
 @Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CheckParam {
+public @interface ParamCheck {
 
-	CheckParamField[] value();
+	ParamCheckField[] value();
 
 }

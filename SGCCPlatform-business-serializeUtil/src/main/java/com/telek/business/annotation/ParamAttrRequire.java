@@ -1,6 +1,6 @@
 package com.telek.business.annotation;
 
-import com.telek.business.Type.CheckParamField;
+import java.lang.annotation.*;
 
 /**
  * @author liu_l
@@ -8,7 +8,11 @@ import com.telek.business.Type.CheckParamField;
  * @time 2019/1/21 10:49
  * @Description: 描述: 传输参数校验类型
  */
-public @interface RequireParam {
+@Documented
+@Inherited
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ParamAttrRequire {
 
     //字段最大长度
     int maxLength() default 0;

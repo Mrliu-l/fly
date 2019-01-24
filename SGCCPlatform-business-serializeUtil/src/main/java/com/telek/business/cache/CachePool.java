@@ -1,10 +1,8 @@
 package com.telek.business.cache;
 
 import com.google.common.collect.Maps;
-import com.telek.business.annotation.RequireParam;
-import com.telek.business.protoUtil.SerializeDeserializeWrapper;
+import com.telek.business.annotation.ParamAttrRequire;
 import io.protostuff.Schema;
-import io.protostuff.runtime.RuntimeSchema;
 import org.objenesis.instantiator.ObjectInstantiator;
 
 import java.lang.reflect.Constructor;
@@ -37,5 +35,5 @@ public class CachePool {
     /**
      * 参数校验param对象上属性注解缓存信息集合
      */
-    public static Map<Field, RequireParam> requireParamMap = new HashMap<>();
+    public static Map<Field, ParamAttrRequire> requireParamMap = new HashMap<>();
 }
