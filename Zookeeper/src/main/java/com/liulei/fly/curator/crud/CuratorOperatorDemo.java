@@ -1,4 +1,4 @@
-package com.liulei.fly.curator;
+package com.liulei.fly.curator.crud;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.api.BackgroundCallback;

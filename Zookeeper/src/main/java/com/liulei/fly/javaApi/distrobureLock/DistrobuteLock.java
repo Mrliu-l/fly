@@ -1,4 +1,4 @@
-package com.liulei.fly.javaApi;
+package com.liulei.fly.javaApi.distrobureLock;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
