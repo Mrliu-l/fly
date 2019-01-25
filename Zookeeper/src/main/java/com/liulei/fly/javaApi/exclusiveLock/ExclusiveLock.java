@@ -1,4 +1,4 @@
-package com.liulei.fly.javaApi.distrobureLock;
+package com.liulei.fly.javaApi.exclusiveLock;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
@@ -17,9 +17,9 @@ import java.util.concurrent.TimeUnit;
  * @author liu_l
  * @email: liu_lei_programmer@163.com
  * @time 2019/1/24 21:17
- * @Description: 描述: zookeeper 实现分布式锁
+ * @Description: 描述: zookeeper 实现排它锁_分布式锁
  */
-public class DistrobuteLock {
+public class ExclusiveLock {
 
     private static ZooKeeper zooKeeper;
 
@@ -33,7 +33,7 @@ public class DistrobuteLock {
     //客户端连接超时市场
     private int connectOutTime;
 
-    public DistrobuteLock(){
+    public ExclusiveLock(){
         try {
             zooKeeper = ZookeeperClient.getClient();
             connectOutTime = ZookeeperClient.sessionTimeOut;
@@ -98,16 +98,16 @@ public class DistrobuteLock {
         Random random = new Random();
         for(int i = 0; i < 10; i++){
             new Thread(()->{
-                DistrobuteLock distrobuteLock = new DistrobuteLock();
+                ExclusiveLock exclusiveLock = new ExclusiveLock();
                 try {
                     count.countDown();
                     count.await();
-                    distrobuteLock.lock();
+                    exclusiveLock.lock();
                     TimeUnit.MILLISECONDS.sleep(random.nextInt(500));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }finally {
-                    distrobuteLock.unLock();
+                    exclusiveLock.unLock();
                 }
             }).start();
         }

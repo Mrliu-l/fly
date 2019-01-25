@@ -1,4 +1,4 @@
-package com.liulei.fly.javaApi.distrobureLock;
+package com.liulei.fly.javaApi.exclusiveLock;
 
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
