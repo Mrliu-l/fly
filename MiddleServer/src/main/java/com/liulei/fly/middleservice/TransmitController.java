@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
@@ -33,7 +34,7 @@ public class TransmitController {
 
     @ResponseBody
     @RequestMapping(path = "/transmit")
-    public String transmit(@RequestBody Map<String, Object> map) throws IOException, NoSuchFieldException, IllegalAccessException {
+    public String transmit(HttpServletRequest request, @RequestBody Map<String, Object> map) throws IOException, NoSuchFieldException, IllegalAccessException {
         long s0 = System.currentTimeMillis();
         String ip = map.get("ip").toString();
         System.out.println("获取到请求；请求转发服务地址为" + ip);
@@ -43,7 +44,8 @@ public class TransmitController {
         Map<String,String> paras = new HashMap<String,String>();
         String param = getParam(map);
         paras.put("param", param);
-        String url = map.get("url").toString();
+        String requestURI = request.getRequestURI();
+        String url = requestURI.replace("/transmit.", "").replace("_","/" );
         long s1 = System.currentTimeMillis();
         String result = myHttpClient.doPost(url,paras);
         return "中间服务器耗时：" + (s1 - s0) + "||服务器返回数据为：" + result;
